@@ -5,17 +5,18 @@ import time
 # employeeClock.py - This will record the duration from when an employee clocks in to when
 # they clock out
 employeeName = ""
-startTime = 0	
+global startTime
+startTime = 0
 
 def ask_user():
-	global startTime
 	print('What is the employee name?')
 	employeeName = input()
 	check = str(input("Employee = %s. Is this correct? Y/N" % employeeName)).lower().strip()
 	try:
 		if check[0] == 'y':
-			print('%s has now clocked in. Beginning shift timer.' % employeeName)
+			global startTime
 			startTIme = time.time()
+			print('%s has now clocked in. Beginning shift timer. (%d)' % (employeeName, startTime))
 			return True
 		elif check[0] == 'n':
 			return False
